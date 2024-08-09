@@ -46,13 +46,16 @@ export default function AddProduct() {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: sendData,
-      });
+      const response = await fetch(
+        "https://product-listing-assignment-backend.onrender.com/api/products",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: sendData,
+        }
+      );
 
       if (response.ok) {
         setProducts((prev) => [sendData, ...prev]);
@@ -94,7 +97,9 @@ export default function AddProduct() {
   };
 
   const fetchProducts = async () => {
-    const res = await fetch("http://localhost:8000/api/products");
+    const res = await fetch(
+      "https://product-listing-assignment-backend.onrender.com/api/products"
+    );
     const allData = await res.json();
     const _sanitizedData = allData?.map((data) => {
       let filteredData = {};
